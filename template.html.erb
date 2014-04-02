@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ユーザエージェント</title>
+    <style type="text/css">
+     body {
+       margin: 2% 5% 8%;
+     }
+
+     .search {
+       border: none;
+       font-size:50px;
+       height: 60px;
+       width: 60%;
+       margin: 10% 2%;
+     }
+
+     .search:focus{
+       outline: 0;
+     }
+
+     li {
+       display: table-row;
+       list-style-type: none;
+       border: true;
+     }
+
+     .name, .company, .useragent {
+       display: table-cell;
+       height: 100px;
+       vertical-align: middle;
+       border-bottom: 1px solid #ecf0f1;
+     }
+
+     .name {
+       width: 20%;
+     }
+
+     .company {
+       width: 15%;
+       color: #95a5a6;
+       text-align: center;
+     }
+
+     .useragent {
+       width: 60%;
+       line-height: 18px;
+       font-size: 13px;
+     }
+    </style>
+  </head>
+
+  <body>
+    <div id="useragent-list">
+      <input class="search" placeholder="ユーザエージェント検索" autofocus>
+      <ul class="list">
+        <% company_uas.each do |comp, uas| %>
+          <% uas.each do |ua| %>
+            <li>
+              <h5 class="name"><%= ua[0] %></h5>
+              <p class="company"><%= comp %></p>
+              <p class="useragent"><%= ua[1] %></p>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <script src="./list.min.js"></script>
+    <script>
+     var useragent_list = new List("useragent-list", {
+       page: 20000,
+       valueNames: ["name", "company"]
+     });
+    </script>
+  </body>
+</html>
