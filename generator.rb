@@ -110,7 +110,7 @@ end
 #
 # Typhoeus maybe faster.
 # http://typhoeus.github.io/
-UserAgent.use_parallel
+# UserAgent.use_parallel
 Encoding.default_external = "UTF-8"
 ns = OpenStruct.new :company_uas => UserAgent.all
 template = ERB.new(File.read("template.html.erb"))
